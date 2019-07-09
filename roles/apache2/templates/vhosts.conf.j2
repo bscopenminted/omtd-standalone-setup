@@ -2,8 +2,9 @@
   ServerName {{ host_fqdn if host_fqdn is defined else hostvars[groups['galaxy'][0]].ansible_fqdn }}
 
   ProxyPass /executor http://localhost:{{executor_port}}
-  ProxyPass /executor http://localhost:{{executor_port}}
+  ProxyPassReverse /executor http://localhost:{{executor_port}}
+
   ProxyPass /editor http://localhost:{{editor_port}}
-  ProxyPass /editor http://localhost:{{editor_port}}
+  ProxyPassReverse /editor http://localhost:{{editor_port}}
 
 </VirtualHost>

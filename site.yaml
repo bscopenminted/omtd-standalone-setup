@@ -1,5 +1,6 @@
 - hosts: galaxy
-  remote_user: root
+  #remote_user: root
+  become: True
   gather_facts: no
   tasks:
       - name: Install python
@@ -10,13 +11,15 @@
         when: install_docker
 
 - hosts: galaxy
-  remote_user: root
+  #remote_user: root
+  become: True
   roles:
       - role: executor
       - role: nfs
       - role: editor
 
 - hosts: galaxy
-  remote_user: root
+  #remote_user: root
+  become: True
   roles:
     - { role: apache2, when: apache2_as_reverse_proxy }
